@@ -91,8 +91,7 @@ class Common(object):
             False
 
     def is_valid_email(self, ses_client, request):
-        regex = '^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)$'
-        match = re.match(regex, request.email)
+        match = re.match(r"^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)$", request.email)
         if not match:
             message = f'For user {request.user_name}, {request.email} is not a valid email.'
             self.logger.warn(message)
